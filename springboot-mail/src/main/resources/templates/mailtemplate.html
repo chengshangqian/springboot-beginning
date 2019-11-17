@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>账号激活</title>
+</head>
+<body>
+	<h2>账号激活</h2>
+	<div>欢迎来到项目交付管理系统</div>
+	<div>以下是您的注册信息：</div>
+	<table>
+		<thead>
+			<tr>
+				<th>用户名</th>
+				<th>邮箱</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr><td th:text="${username}"></td><td th:text="${email}"></td></tr>
+		</tbody>
+	</table>
+	<div><a href="https://www.fandou.com" target="_blank">如核对无误，请点击本链接激活账号</a></div>
+</body>
+</html>

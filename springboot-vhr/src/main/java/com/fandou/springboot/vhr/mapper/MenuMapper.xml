@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fandou.springboot.vhr.mapper.MenuMapper">
+	<resultMap id="BaseResultMap"
+		type="com.fandou.springboot.vhr.model.Menu">
+		<id property="id" column="id" />
+		<result property="url" column="url" />
+		<collection property="roles"
+			ofType="com.fandou.springboot.vhr.model.Role">
+			<id property="id" column="rid" />
+			<result property="code" column="rcode" />
+			<result property="name" column="rname" />
+		</collection>
+	</resultMap>
+	<select id="getAllMenus"
+		resultMap="BaseResultMap">
+		select m.id,m.url,r.id as rid,r.nameZh as rname,r.name as rcode from menu m left join menu_role mr on m.id = mr.mid left join role r on mr.rid = r.id
+	</select>
+</mapper>

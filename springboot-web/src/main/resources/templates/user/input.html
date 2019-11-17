@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>添加/修改用户</title>
+</head>
+<body>
+<h2>添加/修改用户</h2>
+<p th:text="${id}"></p>
+<p th:text="${action}"></p>
+<form action="/upload" method="POST">
+<input type="file" name="uploadFile" value="请选择文件">
+<input type="submit" value="提交">
+</form>
+</body>
+</html>

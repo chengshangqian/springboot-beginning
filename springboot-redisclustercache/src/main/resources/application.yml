@@ -1,0 +1,36 @@
+server:
+   port: 8081
+   
+spring:
+##################################################################################
+#                     Redis Config                                               #
+##################################################################################
+   redis:
+      cluster:
+         ports:
+            - 6381
+            - 6382
+            - 6383
+            - 6384
+            - 6385
+            - 6386
+            - 6387
+            - 6388
+         host: 192.168.101.28
+         poolConfig:
+            max-total: 8
+            max-idle: 8
+            max-wait-millis: -1
+            min-idle: 0
+##################################################################################
+#                     Thymeleaf Config                                           #
+##################################################################################
+   thymeleaf:
+      cache: true
+      check-template: true
+      check-template-location: true
+      encoding: UTF-8
+      prefix: classpath:/templates/
+      servlet:
+         content-type: text/html;charset=utf-8
+      suffix: .html

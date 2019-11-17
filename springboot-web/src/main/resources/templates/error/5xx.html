@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>温馨提示</title>
+</head>
+<body>
+	<h2>系统开小差啦</h2>
+	<table>
+		<tr>
+			<td>时间：</td>
+			<td th:text="${timestamp}"></td>
+		</tr>
+		<tr>
+			<td>状态编码：</td>
+			<td th:text="${status}"></td>
+		</tr>
+		<tr>
+			<td>错误：</td>
+			<td th:text="${error}"></td>
+		</tr>
+		<tr>
+			<td>错误描述：</td>
+			<td th:text="${desc}"></td>
+		</tr>		
+		<tr>
+			<td>错误详情：</td>
+			<td th:text="${message}"></td>
+		</tr>
+		<tr>
+			<td>请求地址：</td>
+			<td th:text="${path}"></td>
+		</tr>
+	</table>
+</body>
+</html>
