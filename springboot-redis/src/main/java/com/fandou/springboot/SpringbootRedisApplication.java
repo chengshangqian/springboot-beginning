@@ -11,5 +11,4 @@ public class SpringbootRedisApplication {
 		SpringApplicationBuilder builder = new SpringApplicationBuilder(SpringbootRedisApplication.class);
 		builder.bannerMode(Banner.Mode.OFF).run(args);		
 	}
-
 }

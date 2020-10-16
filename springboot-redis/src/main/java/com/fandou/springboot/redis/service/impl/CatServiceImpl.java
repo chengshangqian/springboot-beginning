@@ -12,7 +12,6 @@ package com.fandou.springboot.redis.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
@@ -34,55 +33,27 @@ public class CatServiceImpl implements CatService {
 	
 	@Autowired
 	RedisTemplate redisTemplate;
-	
-	@Autowired
-	StringRedisTemplate stringRedisTemplate;
-	
-	/** 
-	 * @Title: saveCatName 
-	 * @Description: 一句话描述方法的作用
-	 * @param key
-	 * @param name
-	 */
-	@Override
-	public void saveCatName(String key, String name) {
-		ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
-		valueOperations.set(key, name);
+
+	private static final String KEY = "REDIS_DATA_CAT_";
+
+	public Cat get(Long id){
+		return getValueOperations().get(KEY + id);
 	}
 
-	/** 
-	 * @Title: saveCat 
-	 * @Description: 一句话描述方法的作用
-	 * @param key
-	 * @param cat
-	 */
-	@Override
-	public void saveCat(String key, Cat cat) {
-		ValueOperations<String, Cat> valueOperations = redisTemplate.opsForValue();
-		valueOperations.set(key, cat);
+	public void create(Cat cat){
+		getValueOperations().set(KEY + cat.getId(),cat);
 	}
 
-	/** 
-	 * @Title: getCatName 
-	 * @Description: 一句话描述方法的作用
-	 * @param key
-	 * @return
-	 */
-	@Override
-	public String getCatName(String key) {
-		ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
-		return valueOperations.get(key);
+	public void update(Cat cat){
+		getValueOperations().setIfPresent(KEY + cat.getId(),cat);
 	}
 
-	/** 
-	 * @Title: getCat 
-	 * @Description: 一句话描述方法的作用
-	 * @param key
-	 * @return
-	 */
-	@Override
-	public Cat getCat(String key) {
-		ValueOperations<String, Cat> valueOperations = redisTemplate.opsForValue();
-		return valueOperations.get(key);
+	public void delete(Long id){
+		getValueOperations().getOperations().delete(KEY + id);
+	}
+
+	public  ValueOperations<String,Cat> getValueOperations(){
+		ValueOperations<String,Cat> vo = redisTemplate.opsForValue();
+		return vo;
 	}
 }

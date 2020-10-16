@@ -10,11 +10,8 @@
  */
 package com.fandou.springboot.redis.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.fandou.springboot.redis.model.Cat;
 import com.fandou.springboot.redis.service.CatService;
@@ -30,40 +27,32 @@ import com.fandou.springboot.redis.service.CatService;
  * @version V0.0.1
  */
 @RestController
+@RequestMapping("/cats")
 public class CatController {
-	private Logger logger = LogManager.getLogger(CatController.class);
-	private String key = "c95";
 	@Autowired
 	CatService catService;
 	
-	/*********************Redis(Jedis) 操作***********************/
-	@GetMapping("/cat/getCat")
-	public Cat getCat() {
-		logger.debug("====> getCat");
-		return catService.getCat(key);
+	/**********Redis(Jedis) 操作**********/
+	@GetMapping("/{id}")
+	public Cat get(@PathVariable("id") Long id) {
+		return catService.get(id);
 	}
 	
-	@GetMapping("/cat/saveCat")
-	public Cat saveCat() {
-		logger.debug("====> saveCat");
-		Cat jerry = new Cat();
-		jerry.setId(1);
-		jerry.setName("Jerry");
-		jerry.setColor("Yellow");
-		catService.saveCat(key,jerry);
-		return jerry;
+	@PostMapping
+	public Cat create(@RequestBody Cat cat) {
+		catService.create(cat);
+		return cat;
 	}
 	
-	@GetMapping("/cat/getName")
-	public String getCatName() {
-		logger.debug("====> getCatName");
-		return catService.getCatName(key+"=>name");
+	@PutMapping
+	public Long update(@RequestBody Cat cat) {
+		catService.update(cat);
+		return cat.getId();
 	}
 	
-	@GetMapping("/cat/saveName")
-	public String saveCatName() {
-		logger.debug("====> saveCatName");
-		catService.saveCatName(key+"=>name","Jerry");
-		return "Jerry";
+	@DeleteMapping("/{id}")
+	public Long delete(@PathVariable("id") Long id) {
+		catService.delete(id);
+		return id;
 	}
 }

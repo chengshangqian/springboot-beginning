@@ -23,8 +23,8 @@ import com.fandou.springboot.redis.model.Cat;
  * @version V0.0.1
  */
 public interface CatService {
-	void saveCatName(String key,String name);
-	void saveCat(String key,Cat cat);
-	String getCatName(String key);
-	Cat getCat(String key);
+	Cat get(Long id);
+	void create(Cat cat);
+	void update(Cat cat);
+	void delete(Long id);
 }
