@@ -10,8 +10,8 @@
  */
 package com.fandou.springboot.rabbitmq.fanout.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,9 @@ import com.fandou.springboot.rabbitmq.model.Cat;
  */
 @Service
 public class CatFanoutServiceImpl implements CatFanoutService {
-	private Logger logger = LogManager.getLogger(CatFanoutServiceImpl.class);
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(CatFanoutServiceImpl.class);
+
 	private final static String ALL_QUEUES = null;
 	
 	@Autowired
@@ -46,6 +48,6 @@ public class CatFanoutServiceImpl implements CatFanoutService {
 	@Override
 	public void sendCat(Cat cat) {
 		rabbitTemplate.convertAndSend(RabbitmqFanoutConfig.FANOUT_NAME,ALL_QUEUES,cat);
-		logger.debug("消息已发送 :: cat.id => " + cat.getId());
+		LOGGER.debug("消息已发送 :: cat.id => " + cat.getId());
 	}
 }

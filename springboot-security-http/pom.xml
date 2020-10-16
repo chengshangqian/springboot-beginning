@@ -3,21 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.fandou.springboot</groupId>
+		<artifactId>pom-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom-parent/pom.xml</relativePath>
 	</parent>
-	<groupId>com.fandou.springboot</groupId>
-	<artifactId>springboot-security-http</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>springboot-security-http</name>
-	<description>Spring Boot安全管理之http认证</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+	<artifactId>springboot-security-http</artifactId>
+	<packaging>war</packaging>
+	<description>Spring Boot安全管理之http认证</description>
 
 	<dependencies>
 		<dependency>
@@ -35,24 +29,9 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>

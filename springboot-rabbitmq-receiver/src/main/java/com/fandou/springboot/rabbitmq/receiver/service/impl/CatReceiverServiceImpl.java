@@ -12,8 +12,9 @@ package com.fandou.springboot.rabbitmq.receiver.service.impl;
 
 import java.util.Date;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.fandou.springboot.rabbitmq.support.PrintThread;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ import com.fandou.springboot.rabbitmq.receiver.service.CatReceiverService;
  */
 @Service
 public class CatReceiverServiceImpl implements CatReceiverService {
-	private Logger logger = LogManager.getLogger(CatReceiverServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CatReceiverServiceImpl.class);
 	
 	/** 
 	 * @Title: addCat 
@@ -42,15 +43,11 @@ public class CatReceiverServiceImpl implements CatReceiverService {
 	 */
 	@Override
 	@Async
+	@PrintThread
 	public Cat addCat(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("CatReceiverServiceImpl :: threadName => " + threadName);
-		
 		cat.setCreateDate(new Date());
 		//TODO 持久化保存代码[耗时任务]
-		
-		logger.info("消息已经成功保存到数据库::cat => " + cat.getId());
+		LOGGER.info("消息已经成功保存到数据库 => {}",cat);
 		return cat;
 	}
-
 }

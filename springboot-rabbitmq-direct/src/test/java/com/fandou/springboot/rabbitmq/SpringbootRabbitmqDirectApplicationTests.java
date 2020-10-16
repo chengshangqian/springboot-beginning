@@ -1,24 +1,20 @@
 package com.fandou.springboot.rabbitmq;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fandou.springboot.rabbitmq.direct.service.CatDirectService;
 import com.fandou.springboot.rabbitmq.model.Cat;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SpringbootRabbitmqDirectApplicationTests {
-	private Logger logger = LogManager.getLogger(SpringbootRabbitmqDirectApplicationTests.class);
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(SpringbootRabbitmqDirectApplicationTests.class);
 	
 	@Autowired
 	CatDirectService catDirectService;
-	
+
 	@Test
 	public void contextLoads() {
 		long start = System.currentTimeMillis();
@@ -31,7 +27,7 @@ public class SpringbootRabbitmqDirectApplicationTests {
 		}
 		long end = System.currentTimeMillis();
 		long spentTime = end - start;
-		logger.debug("发送1w条消息总共花费时间  => " + (spentTime/1000) + "秒");
+		LOGGER.debug("发送1w条消息总共花费时间  => " + (spentTime/1000) + "秒");
 	}
 
 }

@@ -10,8 +10,8 @@
  */
 package com.fandou.springboot.rabbitmq.topic.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ import com.fandou.springboot.rabbitmq.topic.service.CatTopicService;
  */
 @Service
 public class CatTopicServiceImpl implements CatTopicService {
-	private Logger logger = LogManager.getLogger(CatTopicServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(CatTopicServiceImpl.class);
 	
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
@@ -45,6 +45,6 @@ public class CatTopicServiceImpl implements CatTopicService {
 	@Override
 	public void sendCat(Cat cat,String queue) {
 		rabbitTemplate.convertAndSend(RabbitmqTopicConfig.TOPIC_NAME,queue,cat);
-		logger.debug("消息已发送 :: cat.name => " + cat.getName());
+		LOGGER.debug("消息已发送 :: cat.name => " + cat.getName());
 	}
 }

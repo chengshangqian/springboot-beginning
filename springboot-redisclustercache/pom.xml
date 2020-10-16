@@ -4,36 +4,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.fandou.springboot</groupId>
+		<artifactId>pom-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom-parent/pom.xml</relativePath>
 	</parent>
-	<groupId>com.fandou.springboot</groupId>
-	<artifactId>springboot-redisclustercache</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>springboot-redisclustercache</name>
-	<description>Spring Boot整合缓存之Redis集群缓存</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+	<artifactId>springboot-redisclustercache</artifactId>
+	<packaging>war</packaging>
+	<description>Spring Boot整合缓存之Redis集群缓存</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 
 		<dependency>
@@ -60,11 +44,7 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -80,14 +60,5 @@
 			<artifactId>jedis</artifactId>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

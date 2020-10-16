@@ -10,8 +10,7 @@
  */
 package com.fandou.springboot.rabbitmq.receiver.linstener;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.fandou.springboot.rabbitmq.support.PrintThread;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,53 +30,46 @@ import com.fandou.springboot.rabbitmq.receiver.service.CatReceiverService;
  */
 @Component
 public class RabbitmqReceiver {
-	private Logger logger = LogManager.getLogger(RabbitmqReceiver.class);
-	
+
 	@Autowired
 	CatReceiverService catReceiverService;
 	
 	/*******************direct模式发送端******************************************/
 	@RabbitListener(queues="c95-direct-queue")
+	@PrintThread
 	public void receiveDirectQueue(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveDirectQueue::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}
 	
 	/*******************fanout模式发送端******************************************/
 	@RabbitListener(queues="c95-fanout-queue-one")
+	@PrintThread
 	public void receiveFanoutQueueOne(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveFanoutQueueOne::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}
 	
 	@RabbitListener(queues="c95-fanout-queue-two")
+	@PrintThread
 	public void receiveFanoutQueueTwo(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveFanoutQueueTwo::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}
 	
 	/*******************topic模式发送端******************************************/
 	@RabbitListener(queues="c95-topic-queue-jerry")
+	@PrintThread
 	public void receiveTopicQueueJerry(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveTopicQueueJerry::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}
 	
 	@RabbitListener(queues="c95-topic-queue-mickey")
+	@PrintThread
 	public void receiveTopicQueueMickey(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveTopicQueueMickey::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}	
 	
 	@RabbitListener(queues="c95-topic-queue-cat")
+	@PrintThread
 	public void receiveTopicQueueCat(Cat cat) {
-		String threadName = Thread.currentThread().getName();
-		logger.info("RabbitmqReceiver::receiveTopicQueueCat::threadName => " + threadName);
 		catReceiverService.addCat(cat);
 	}	
 }

@@ -3,21 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.fandou.springboot</groupId>
+		<artifactId>pom-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom-parent/pom.xml</relativePath>
 	</parent>
-	<groupId>com.fandou.springboot</groupId>
-	<artifactId>springboot-valid</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-valid</name>
-	<description>Spring Boot数据校验</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-	</properties>
+	<artifactId>springboot-valid</artifactId>
+	<description>Spring Boot数据校验</description>
 
 	<dependencies>
 		<dependency>
@@ -31,21 +24,5 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>		
  		-->
- 		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>
