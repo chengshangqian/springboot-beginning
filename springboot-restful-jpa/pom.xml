@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.fandou.springboot</groupId>
-	<artifactId>springboot-restful</artifactId>
+	<artifactId>springboot-restful-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-restful</name>
+	<name>springboot-restful-jpa</name>
 	<description>Spring Boot之构建RESTful服务(JPA)</description>
 
 	<properties>
