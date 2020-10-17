@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.fandou.springboot</groupId>
-  <artifactId>spring-boot-beginning</artifactId>
+  <artifactId>spring-boot-learning</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>SpringBoot入门</name>
   <description>基于SpringBoot快速构建轻量级的JEE开发</description>
   <modules>
 	  <module>springboot-activemq-receiver</module>
